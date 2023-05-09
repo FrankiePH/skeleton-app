@@ -1,0 +1,14 @@
+[1] Start message sent
+[2] Start message recieved
+[3] Assessment request sent
+[4] Assessment request recieved
+[5] Tympa start encounter send
+[6] Recieved starter event
+[7] Encounter complete sent
+[9] Encounter complete sent
+[8] Encounter complete recieved
+[10] Finish event sent
+[12] Assessment report sent
+[13] Assessment report recieved
+End!
+[11] Tympa finish recieved

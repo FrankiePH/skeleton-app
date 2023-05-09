@@ -2,6 +2,7 @@ const app = require('express')();
 const bodyParser = require('body-parser');
 const http = require('http');
 const queststring = require('querystring');
+const fs = require('fs');
 
 const port = 8000;
 
@@ -17,7 +18,12 @@ app.post('/assessment_request', (req, res) => {
     console.log('Recieved assessment request')
     console.log('Posting start event to tympa device...')
 
-    var start_encounter = JSON.stringify({
+    fs.appendFile('log.txt', '[4] Assessment request recieved\n', function(err) {
+        if (err) throw err;
+        console.log('Saved');
+    });
+
+    var start_encounter = queststring.stringify({
         'patient_id': 963401,
         'organisation': 013004,
         'type': 'start_encounter',
@@ -25,10 +31,11 @@ app.post('/assessment_request', (req, res) => {
     });
     var options = {
         uri: `http://[::1]:${port}`,
+        port: 3000,
         path: '/start_event',
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/x-www-form-urlencoded',
             'Content-Length': Buffer.byteLength(start_encounter)
         }
     };
@@ -44,7 +51,10 @@ app.post('/assessment_request', (req, res) => {
     });
     httpreq.write(start_encounter);
     httpreq.end();
-
+    fs.appendFile('log.txt', '[5] Tympa start encounter send\n', function(err) {
+        if (err) throw err;
+        console.log('Saved');
+    });
 });
 
 app.post('/encounter_complete', (req, res) => {
@@ -62,7 +72,12 @@ app.post('/tympa_device_finish', (req, res) => {
     console.log('The encounter has been completed')
     console.log('Posting assessment report...')
 
-    var assessment_report = JSON.stringify({
+    fs.appendFile('log.txt', '[11] Tympa finish recieved\n', function(err) {
+        if (err) throw err;
+        console.log('Saved');
+    });
+
+    var assessment_report = queststring.stringify({
         'patient_id': 963401,
         'organisation': 013004,
         'type': 'assessment_report',
@@ -75,7 +90,7 @@ app.post('/tympa_device_finish', (req, res) => {
         path: '/assessment_report',
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/x-www-form-urlencoded',
             'Content-Length': Buffer.byteLength(assessment_report)
         }
     };
@@ -91,6 +106,11 @@ app.post('/tympa_device_finish', (req, res) => {
     });
     httpreq.write(assessment_report);
     httpreq.end();
+
+    fs.appendFile('log.txt', '[12] Assessment report sent\n', function(err) {
+        if (err) throw err;
+        console.log('Saved');
+    });
 });
 
 app.listen(port, () => {

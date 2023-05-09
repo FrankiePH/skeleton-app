@@ -2,6 +2,7 @@ const app = require('express')();
 const bodyParser = require('body-parser');
 const http = require('http');
 const queststring = require('querystring');
+const fs = require('fs');
 
 const port = 3000;
 
@@ -11,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 function post_finish_request() {
     console.log('Posting tympa device finish message')
 
-    var tympa_device_finish = JSON.stringify({
+    var tympa_device_finish = queststring.stringify({
         'patient_id': 963401,
         'organisation': 013004,
         'type': 'tympa_device_finish',
@@ -24,7 +25,7 @@ function post_finish_request() {
         path: '/tympa_device_finish',
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/x-www-form-urlencoded',
             'Content-Length': Buffer.byteLength(tympa_device_finish)
         }
     };
@@ -40,6 +41,10 @@ function post_finish_request() {
     });
     httpreq.write(tympa_device_finish);
     httpreq.end();
+    fs.appendFile('log.txt', '[10] Finish event sent\n', function(err) {
+        if (err) throw err;
+        console.log('Saved');
+    });
 };
 
 app.post('/start_event', (req, res) => {
@@ -49,6 +54,11 @@ app.post('/start_event', (req, res) => {
     */
     console.log('Recieved start event')
     console.log(`Starting timer for 5 seconds...`)
+
+    fs.appendFile('log.txt', '[6] Recieved starter event\n', function(err) {
+        if (err) throw err;
+        console.log('Saved');
+    });
 
     setTimeout(post_finish_request, 5000)
 })

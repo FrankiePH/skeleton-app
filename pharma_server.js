@@ -2,6 +2,7 @@ const app = require('express')();
 const bodyParser = require('body-parser');
 const http = require('http');
 const queststring = require('querystring');
+const fs = require('fs');
 
 const port = 8080;
 
@@ -16,7 +17,12 @@ app.post('/start_encounter', (req, res) => {
     console.log('Recieved start request')
     console.log('Posting assessment request...');
 
-    var assessment_request = JSON.stringify({
+    fs.appendFile('log.txt', '[2] Start message recieved\n', function(err) {
+        if (err) throw err;
+        console.log('Saved');
+    });
+
+    var assessment_request = queststring.stringify({
         'patient_id': 963401,
         'organisation': 013004,
         'type': 'assessment_request',
@@ -29,7 +35,7 @@ app.post('/start_encounter', (req, res) => {
         path: '/assessment_request',
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/x-www-form-urlencoded',
             'Content-Length': Buffer.byteLength(assessment_request)
         }
     };
@@ -45,6 +51,11 @@ app.post('/start_encounter', (req, res) => {
     });
     httpreq.write(assessment_request);
     httpreq.end();
+
+    fs.appendFile('log.txt', '[3] Assessment request sent\n', function(err) {
+        if (err) throw err;
+        console.log('Saved');
+    });
 });
 
 app.post('/finish_encounter', (req, res) => {
@@ -55,7 +66,12 @@ app.post('/finish_encounter', (req, res) => {
     console.log('Encounter completed');
     console.log('Posting encounter complete request...');
 
-    var encounter_complete = JSON.stringify({
+    fs.appendFile('log.txt', '[8] Encounter complete recieved\n', function(err) {
+        if (err) throw err;
+        console.log('Saved');
+    });
+
+    var encounter_complete = queststring.stringify({
         'patient_id': 963401,
         'organisation': 013004,
         'type': 'encounter_complete',
@@ -68,7 +84,7 @@ app.post('/finish_encounter', (req, res) => {
         path: '/encounter_complete',
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/x-www-form-urlencoded',
             'Content-Length': Buffer.byteLength(encounter_complete)
         }
     };
@@ -84,6 +100,11 @@ app.post('/finish_encounter', (req, res) => {
     });
     httpreq.write(encounter_complete);
     httpreq.end();
+
+    fs.appendFile('log.txt', '[9] Encounter complete sent\n', function(err) {
+        if (err) throw err;
+        console.log('Saved');
+    });
 });
 
 app.post('/assessment_report', (req, res) => {
@@ -91,6 +112,12 @@ app.post('/assessment_report', (req, res) => {
     This endpoint recieves the assessment report from the tympa server
     */
     console.log('Assessment report recieved')
+    console.log('Finished')
+
+    fs.appendFile('log.txt', '[13] Assessment report recieved\nEnd!\n', function(err) {
+        if (err) throw err;
+        console.log('Saved');
+    });
 });
 
 app.listen(port, () => {
