@@ -60,7 +60,7 @@ app.post('/start_event', (req, res) => {
         console.log('Saved');
     });
 
-    setTimeout(post_finish_request, 5000)
+    setTimeout(post_finish_request, 10000)
 })
 
 app.listen(port, () => {

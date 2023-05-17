@@ -1,0 +1,49 @@
+{
+    "patient_identifiable_section": {
+        "original_referral": "23-Nov-22",
+        "referred_from": "Violet Patch Pharmacy (Branch: 5477 - Flowers Medical Centre F1234)",
+        "client_name": "Mickey Mouse",
+        "date_of_birth": "01-Feb-03",
+        "age": "19",
+        "gender": "Male",
+        "address": "123 Alphabet Road, Broad way",
+        "postcode": "AB123CD",
+        "nhs_number": "11111111111",
+        "contact_details": {
+            "email": "MickeyMouse@invalid",
+            "telephone": "01234567890",
+            "preferred_method": "email"
+        },
+        "gp_practice_section": {
+            "healthcare_practices": [
+                "GPs",
+                "Prescribing hubs",
+                "Referral centers",
+                "Safeguarding lookup list"
+            ]
+        },
+        "refer_to": "Followup organisation - F9876",
+        "referral_notes": "Answer to Referral Notes text box ",
+        "gp_practice": "N/A",
+        "ethnicity": "White - British"
+    },
+    "medical_history": {
+        "symptoms_of_covid_19_infection": "No",
+        "sudden_hearing_loss_within_a_24_to_48hr_period": "No",
+        "raised_intracranial_pressure_Regular_severe_headaches_vision_change_vomiting_imbalance": "No",
+        "evidence_of_facial_nerve_palsy": "No",
+        "acute_ear_trauma": "No",
+        "recent_head_injury": "No",
+        "severe_vertigo_or_dizziness": "No",
+        "ear_discharge_for_more_than_two_weeks": "No",
+        "significant_dementia_to_stop_concent": "No",
+        "unilateral_facial_numbness": "No",
+        "acute_ear_pain": "No",
+        "known_mastoid_cavity": "No",
+        "none_of_the_above": "Yes",
+        "used_ear_wax_drops": "Yes"
+    },
+    "confirmation_of_written_concent": {
+        "service_concent": "Yes"
+    }
+}

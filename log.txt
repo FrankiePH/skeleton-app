@@ -8,7 +8,7 @@
 [9] Encounter complete sent
 [8] Encounter complete recieved
 [10] Finish event sent
+[11] Tympa finish recieved
 [12] Assessment report sent
 [13] Assessment report recieved
 End!
-[11] Tympa finish recieved

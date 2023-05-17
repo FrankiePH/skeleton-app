@@ -1,0 +1,59 @@
+{
+    "tympa_health_examination": {
+        "examination_outcomes": {
+            "foreign_body_not_safe_to_proceed": "No",
+            "wax_obstructing_50%_of_ear_drum": "Yes"
+        },
+        "affected_ear": {
+            "left": "Yes",
+            "right": "No",
+            "both": "No"
+        },
+        "action_taken": {
+            "otoscopy_performed": "Yes",
+            "microsuction_performed": "Yes",
+            "complete_screening_audiogram": "No",
+            "no_action_required": "No"
+        },
+        "issued_identified": {
+            "abnormal_hearing_screen": "Yes",
+            "abnormal_ear_drum": "Yes",
+            "clinical_red_flags": "No",
+            "no_issues_identified": "No",
+            "other": "No"
+        },
+        "followup_appointment": {
+            "required": "Yes",
+            "appointment_date": "N/A",
+            "appointment_time": "N/A"
+        }
+    },
+    "reccomendations_for_gp": {
+        "suggested_gp_action": {
+            "gp_referral_required_to_audiology": "Yes",
+            "gp_referral_required_to_ent": "Yes",
+            "no_further_action": "No",
+            "other": "No"
+        },
+        "hospital_name": {
+            "kingston_hospital": "Yes",
+            "st_georges_hospital": "No",
+            "croydon_hospital": "No",
+            "epsom_and_st_helier_hospital": "No"
+        },
+        "service_outcome": {
+            "patient_discharged_no_gp_action": "Yes",
+            "patient_discharged_gp_outcome_required": "No",
+            "patient_did_not_use_drops_prior_to_appointment": "No"
+        },
+        "other": "No",
+        "notes_to_gp": "N/A"
+    },
+    "consultation_notes": {
+        "notes_to_gp": "N/A",
+        "manual_completion_of_provision_status": {
+            "pending": "No",
+            "complete": "Yes"
+        }
+    }
+}
